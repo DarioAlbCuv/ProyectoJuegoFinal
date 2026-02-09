@@ -6,7 +6,7 @@ public class MusicaContinua : MonoBehaviour
 
     void Awake()
     {
-        // Esto saca al objeto de cualquier "padre" para que pueda ser inmortal
+        // Esto saca al objeto de cualquier padre para que pueda ser inmortal
         transform.SetParent(null);
 
         if (instancia == null)

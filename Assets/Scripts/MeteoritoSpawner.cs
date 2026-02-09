@@ -32,17 +32,17 @@ public class MeteoritoSpawner : MonoBehaviour
 
         
 
-        // 2. FASE INICIAL meteoritos pequeños (0) y medianos (1)
+        // 1. FASE INICIAL meteoritos pequeños (0) y medianos (1)
         if (puntuacion < 150 && puntuacion < 250)
         {
             indiceMeteorito = Random.Range(0, 2);
         }
-        // 3. FASE MEDIA dejan de salir los pequeños (0). Salen: 1 y 2.
+        // 2. FASE MEDIA dejan de salir los pequeños (0). Salen: 1 y 2.
         else if (puntuacion >= 250 && puntuacion < 500)
         {
             indiceMeteorito = Random.Range(1, 3);
         }
-        // 4. FASE EXPERTA solo meteoritos grandes y gigantes. Salen: 2 y 3.
+        // 3. FASE EXPERTA solo meteoritos grandes y gigantes. Salen: 2 y 3.
         else if (puntuacion >= 500)
         {
             indiceMeteorito = Random.Range(2, 4);
