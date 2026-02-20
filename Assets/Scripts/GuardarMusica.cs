@@ -1,22 +1,18 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GuardarMusica : MonoBehaviour
 {
-    private AudioSource miAudio;
-
     void Start()
     {
-        miAudio = GetComponent<AudioSource>();
-        // Al empezar, ponemos el volumen que estaba guardado
-        float vol = PlayerPrefs.GetFloat("VolumenGuardado", 0.5f);
-        if (miAudio != null) miAudio.volume = vol;
-    }
+        AudioSource miAudio = GetComponent<AudioSource>();
 
-    public void GuardarValorVolumen(float valor)
-    {
-        if (miAudio != null) miAudio.volume = valor;
-        PlayerPrefs.SetFloat("VolumenGuardado", valor);
-        PlayerPrefs.Save();
+        if (miAudio != null)
+        {
+            // 1. Buscamos EXACTAMENTE la misma palabra que usa el Slider ("VolumenMusica")
+            float vol = PlayerPrefs.GetFloat("VolumenMusica", 0.5f);
+
+            // 2. Le aplicamos el volumen matemático a la música nada más arrancar
+            miAudio.volume = vol * vol;
+        }
     }
 }

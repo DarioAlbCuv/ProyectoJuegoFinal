@@ -25,6 +25,9 @@ public class Meteorito : MonoBehaviour
             // 2. Explosión visual
             Instantiate(prefabExplosion, otro.transform.position, Quaternion.identity);
 
+            int puntosFinales = FindObjectOfType<ScoreManager>().ObtenerPuntuacionFinal();
+            FindObjectOfType<GestorRecords>().ProcesarMuerte(puntosFinales);
+
             // 3. Ocultar la nave
             otro.gameObject.SetActive(false);
 

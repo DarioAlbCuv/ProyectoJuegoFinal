@@ -6,13 +6,16 @@ public class PauseManager : MonoBehaviour
     public GameObject objetoMenuPausa;
     private bool estaPausado = false;
 
-    void Update()
+    public void ActivarDesactivarPausa()
     {
-        // Si pulsas ESC
-        if (Input.GetKeyDown(KeyCode.Escape))
+        // Si estaba pausado, lo despausa. Si no estaba, lo pausa.
+        if (estaPausado)
         {
-            if (estaPausado) AlternarPausa(false);
-            else AlternarPausa(true);
+            AlternarPausa(false);
+        }
+        else
+        {
+            AlternarPausa(true);
         }
     }
 
@@ -27,7 +30,7 @@ public class PauseManager : MonoBehaviour
 
     public void Reiniciar()
     {
-        Time.timeScale = 1f; // Evita que el juego empieza congelado
+        Time.timeScale = 1f; // Evita que el juego empiece congelado
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

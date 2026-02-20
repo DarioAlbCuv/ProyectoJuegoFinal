@@ -13,7 +13,7 @@ public class PlatformSpawner : MonoBehaviour
 
     [Header("Control de Distancia")]
     public float spawnThreshold = 10f; // Distancia por encima del jugador para crear plataformas
-    private float lastSpawnY = 0f;     // Posición Y de la última plataforma creada
+    private float lastSpawnY = -1.5f;     // Posición Y de la última plataforma creada
 
     void Start()
     {

@@ -5,7 +5,7 @@ public class ConectarSliderMusica : MonoBehaviour
 {
     void Start()
     {
-        // 1. Buscamos el objeto (el que tiene el AudioSource)
+        // Buscamos el objeto de la música
         GameObject musicaObjeto = GameObject.Find("Musica");
 
         if (musicaObjeto != null)
@@ -13,17 +13,26 @@ public class ConectarSliderMusica : MonoBehaviour
             Slider miSlider = GetComponent<Slider>();
             AudioSource fuenteAudio = musicaObjeto.GetComponent<AudioSource>();
 
-            // 2. Sincronizamos la posición de la barra con el volumen real
-            miSlider.value = fuenteAudio.volume;
+            // 1. Leemos la memoria EXACTA ("VolumenMusica"). Si no hay nada, ponemos 0.5 por defecto.
+            float volGuardado = PlayerPrefs.GetFloat("VolumenMusica", 0.5f);
 
-            // 3. Limpiamos eventos viejos para evitar errores
+            // 2. Colocamos el Slider en su sitio nada más arrancar
+            miSlider.value = volGuardado;
+
+            // 3. Le aplicamos el volumen matemático al altavoz
+            fuenteAudio.volume = volGuardado * volGuardado;
+
+            // Limpiamos eventos viejos
             miSlider.onValueChanged.RemoveAllListeners();
 
-            // 4. Conectamos el slider a la función de volumen dinámicamente
+            // 4. Conectamos el slider para que guarde los cambios
             miSlider.onValueChanged.AddListener(delegate {
-                fuenteAudio.volume = miSlider.value;
-                // También guardamos el valor
-                PlayerPrefs.SetFloat("VolumenGuardado", miSlider.value);
+
+                fuenteAudio.volume = miSlider.value * miSlider.value; // Curva suave
+
+                // Guardamos con la misma palabra exacta
+                PlayerPrefs.SetFloat("VolumenMusica", miSlider.value);
+                PlayerPrefs.Save();
             });
         }
     }

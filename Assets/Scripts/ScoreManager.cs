@@ -47,4 +47,9 @@ public class ScoreManager : MonoBehaviour
             }
         }
     }
+
+    public int ObtenerPuntuacionFinal()
+    {
+        return (int)topScore;
+    }
 }
