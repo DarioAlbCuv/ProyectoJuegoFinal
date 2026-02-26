@@ -1,25 +1,31 @@
+/* Autor: Dario Alberto Cuevas
+ * Descripción: Gestiona la lectura de Inputs (teclado) y aplica las fuerzas 
+ * horizontales al Rigidbody2D. Incluye la lógica matemática 
+ * del "Screen Wrap" para el bucle de pantalla lateral.
+ * Fecha de creación: 15/01/2026
+ * Última modificación: 22/02/2026
+*/
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem; // 1. ¡AÑADIDA LA LIBRERÍA DEL INPUT SYSTEM!
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 8f;
     private Rigidbody2D rb;
     private float horizontalInput;
-
-    // 1. Variable para guardar el altavoz de la nave
     private AudioSource miAudioSource;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        // --- NUEVO: Leer el volumen de SFX guardado en el menú ---
+        // Leer el volumen de SFX guardado en el menú
         miAudioSource = GetComponent<AudioSource>();
 
         // Comprobamos si la nave tiene un AudioSource puesto
         if (miAudioSource != null)
         {
-            // Leemos el valor (0.5 por defecto si es la primera vez que juega)
+            // Leemos el valor
             float volumenGuardado = PlayerPrefs.GetFloat("VolumenSFX", 0.5f);
             // Aplicamos la curva logarítmica (valor * valor)
             miAudioSource.volume = volumenGuardado * volumenGuardado;
@@ -38,7 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         if (valor.isPressed)
         {
-            // Buscamos tu PauseManager en la escena y le decimos que active/desactive la pausa
+            // Buscamos el PauseManager en la escena y le decimos que active/desactive la pausa
             FindObjectOfType<PauseManager>().ActivarDesactivarPausa();
         }
     }
@@ -74,7 +80,7 @@ public class PlayerController : MonoBehaviour
             // 3. Reiniciamos el nivel
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        // Si el jugador cae por debajo del suelo inicial (ejemplo: Y = -5)
+        // Si el jugador cae por debajo del suelo inicial
         else if (transform.position.y < -5f)
         {
             Debug.Log("Game Over");

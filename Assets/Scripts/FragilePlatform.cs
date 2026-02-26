@@ -1,3 +1,10 @@
+/* Autor: Dario Alberto Cuevas
+ * Descripción: Gestiona las plataformas rojas. Activa una invocación de 
+ * destrucción retardada (0.5s) tras detectar el contacto con el jugador.
+ * Fecha de creación: 26/01/2026
+ * Última modificación: 22/02/2026
+*/
+
 using UnityEngine;
 
 public class FragilePlatform : MonoBehaviour
@@ -20,7 +27,6 @@ public class FragilePlatform : MonoBehaviour
 
     void DestroyPlatform()
     {
-        // Puedes añadir aquí un efecto de sonido o partículas antes de borrarla
         Destroy(gameObject);
     }
 }

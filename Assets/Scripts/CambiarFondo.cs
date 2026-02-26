@@ -1,14 +1,22 @@
+/* Autor: Dario Alberto Cuevas
+ * Descripción: Sistema de progresión estética. Lee la coordenada Y del jugador 
+ * y utiliza una operación de módulo (%) para ciclar automáticamente 
+ * entre un Array de Sprites, creando un bucle visual infinito.
+ * Fecha de creación: 20/02/2026
+ * Última modificación: 22/02/2026
+*/
+
 using UnityEngine;
 
 public class CambiarFondo : MonoBehaviour
 {
     [Header("Configuración visual")]
     public SpriteRenderer miSpriteRenderer;
-    public Sprite[] listaFondos; // Aquí meteremos tus 4 fondos
+    public Sprite[] listaFondos;
 
     [Header("Configuración de Altura")]
     public Transform jugador; // Para leer su altura
-    public float metrosParaCambiar = 100f; // Cada cuánta altura cambia el fondo
+    public float metrosParaCambiar = 100f; 
 
     private int indiceActual = 0;
 
@@ -35,7 +43,7 @@ public class CambiarFondo : MonoBehaviour
             // Evitamos que calcule cosas raras si la nave cae por debajo de 0
             if (nivelDeAltura < 0) nivelDeAltura = 0;
 
-            // 2. LA MAGIA DEL BUCLE (%): Si tienes 4 fondos, al llegar al nivel 4, esto devuelve 0.
+            // 2. Al llegar al nivel 4, esto devuelve 0.
             int nuevoIndice = nivelDeAltura % listaFondos.Length;
 
             // 3. Si toca cambiar de imagen, la cambiamos
@@ -43,8 +51,6 @@ public class CambiarFondo : MonoBehaviour
             {
                 indiceActual = nuevoIndice;
                 miSpriteRenderer.sprite = listaFondos[indiceActual];
-
-                Debug.Log("?? ¡Bucle de fondos! Cambiando a la imagen número: " + (indiceActual + 1));
             }
         }
     }

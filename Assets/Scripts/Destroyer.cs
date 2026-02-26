@@ -1,3 +1,10 @@
+/* Autor: Dario Alberto Cuevas
+ * Descripción: Componente utilitario de optimización. 
+ * Destruye los objetos que salen por el límite inferior de la 
+ * pantalla para liberar memoria RAM y evitar caídas de FPS.
+ * Fecha de creación: 18/01/2026
+ * Última modificación: 22/02/2026
+*/
 using UnityEngine;
 
 public class Destroyer : MonoBehaviour

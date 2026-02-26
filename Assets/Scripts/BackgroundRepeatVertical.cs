@@ -1,3 +1,10 @@
+/* Autor: Dario Alberto Cuevas
+ * Descripción: Sistema de optimización de entorno. Reposiciona las texturas de 
+ * fondo verticalmente basándose en la posición de la cámara, 
+ * creando la ilusión de un fondo espacial infinito.
+ * Fecha de creación: 18/01/2026
+ * Última modificación: 22/02/2026
+*/
 using UnityEngine;
 
 public class BackgroundRepeatVertical : MonoBehaviour
@@ -23,7 +30,7 @@ public class BackgroundRepeatVertical : MonoBehaviour
 
     private void ResetPosition()
     {
-        // Movemos el fondo hacia arriba el doble de su altura (asumiendo que tienes 2 fondos)
+        // Movemos el fondo hacia arriba el doble de su altura
         transform.Translate(new Vector3(0f, 2 * spriteHeight, 0f));
     }
 }

@@ -1,3 +1,9 @@
+/* Autor: Dario Alberto Cuevas
+ * Descripción: Implementa el Patrón de Diseño Singleton con DontDestroyOnLoad 
+ * para asegurar que la música persista ininterrumpida entre escenas.
+ * Fecha de creación: 10/02/2026
+ * Última modificación: 22/02/2026
+*/
 using UnityEngine;
 
 public class MusicaContinua : MonoBehaviour

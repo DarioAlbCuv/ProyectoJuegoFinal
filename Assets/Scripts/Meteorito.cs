@@ -1,3 +1,10 @@
+/* Autor: Dario Alberto Cuevas
+ * Descripción: Lógica individual del proyectil. Controla su traslación constante 
+ * y lanza el evento de Game Over si su Trigger intercepta al jugador.
+ * Fecha de creación: 02/02/2026
+ * Última modificación: 22/02/2026
+*/
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

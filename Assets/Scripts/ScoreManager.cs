@@ -1,3 +1,9 @@
+/* Autor: Dario Alberto Cuevas
+ * Descripción: Administrador de puntuación. Actualiza el HUD en tiempo real 
+ * basándose en la altura máxima alcanzada y gestiona el guardado.
+ * Fecha de creación: 28/01/2026
+ * Última modificación: 22/02/2026
+*/
 using UnityEngine;
 using TMPro;
 

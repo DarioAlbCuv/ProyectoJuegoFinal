@@ -1,3 +1,9 @@
+/* Autor: Dario Alberto Cuevas
+ * Descripción: Controla la serialización y recuperación de la tabla de Top 10 
+ * Puntuaciones utilizando PlayerPrefs para garantizar su persistencia.
+ * Fecha de creación: 18/02/2026
+ * Última modificación: 22/02/2026
+*/
 using UnityEngine;
 using TMPro; 
 using UnityEngine.SceneManagement;
@@ -8,7 +14,7 @@ public class GuardarNombre : MonoBehaviour
 
     void Start()
     {
-        // Si el jugador ya jugó ayer, le autocompletamos el nombre
+        // Si el jugador ya jugó, le autocompletamos el nombre
         if (inputNombre != null)
         {
             inputNombre.text = PlayerPrefs.GetString("JugadorActual", "");

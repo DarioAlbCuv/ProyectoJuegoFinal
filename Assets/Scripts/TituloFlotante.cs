@@ -1,3 +1,10 @@
+/* Autor: Dario Alberto Cuevas
+ * Descripción: Componente visual para la Interfaz. Utiliza funciones matemáticas 
+ * (Mathf.Sin) para alterar suavemente la posición Y del título, 
+ * creando un efecto de levitación constante sin usar animaciones.
+ * Fecha de creación: 05/02/2026
+ * Última modificación: 22/02/2026
+*/
 using UnityEngine;
 
 public class TituloFlotante : MonoBehaviour
@@ -14,13 +21,12 @@ public class TituloFlotante : MonoBehaviour
         // Cogemos el componente de la UI que controla la posición
         rectTransform = GetComponent<RectTransform>();
 
-        // Guardamos dónde pusiste el texto exactamente para usarlo de base
+        // Guardamos dónde esta el texto exactamente para usarlo de base
         posicionInicial = rectTransform.anchoredPosition;
     }
 
     void Update()
     {
-        // Calculamos la nueva altura usando el "Seno" del tiempo (crea una curva suave)
         float nuevaY = posicionInicial.y + Mathf.Sin(Time.time * velocidad) * altura;
 
         // Se la aplicamos al título

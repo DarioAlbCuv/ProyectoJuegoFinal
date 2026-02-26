@@ -1,3 +1,11 @@
+/* Autor: Dario Alberto Cuevas
+ * Descripción: Algoritmo central de generación. Instancia Prefabs de plataformas 
+ * por encima de la cámara evaluando la puntuación actual para 
+ * alterar las probabilidades de aparición de plataformas frágiles.
+ * Fecha de creación: 20/01/2026
+ * Última modificación: 22/02/2026
+*/
+
 using UnityEngine;
 
 public class PlatformSpawner : MonoBehaviour
@@ -13,7 +21,7 @@ public class PlatformSpawner : MonoBehaviour
 
     [Header("Control de Distancia")]
     public float spawnThreshold = 10f; // Distancia por encima del jugador para crear plataformas
-    private float lastSpawnY = -1.5f;     // Posición Y de la última plataforma creada
+    private float lastSpawnY = -1.5f;  // Posición Y de la última plataforma creada
 
     void Start()
     {
@@ -35,7 +43,7 @@ public class PlatformSpawner : MonoBehaviour
 
     void SpawnPlatform()
     {
-        // Elige un número al azar entre los tipos de plataformas que tengas
+        // Elige un número al azar entre los tipos de plataformas que hay
         int randomIndex = Random.Range(0, platformPrefabs.Length);
         GameObject prefabToSpawn = platformPrefabs[randomIndex];
 

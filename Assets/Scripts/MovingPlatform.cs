@@ -1,3 +1,10 @@
+/* Autor: Dario Alberto Cuevas
+ * Descripción: Controla el desplazamiento lateral constante mediante interpolación 
+ * matemática para aumentar la dificultad de aterrizaje.
+ * Fecha de creación: 25/01/2026
+ * Última modificación: 22/02/2026
+*/
+
 using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour

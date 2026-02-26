@@ -1,8 +1,13 @@
+/* Autor: Dario Alberto Cuevas
+ * Descripción: Controla la serialización y recuperación de la tabla de Top 10 
+ * Puntuaciones utilizando PlayerPrefs para garantizar su persistencia.
+ * Fecha de creación: 18/02/2026
+ * Última modificación: 22/02/2026
+*/
 using UnityEngine;
 
 public class GestorRecords : MonoBehaviour
 {
-    // Llama a esta función desde tu script de Salud o GameManager CUANDO EL JUGADOR MUERA
     public void ProcesarMuerte(int puntosFinales)
     {
         // 1. Recuperamos el nombre que se guardó en el menú
@@ -13,7 +18,7 @@ public class GestorRecords : MonoBehaviour
         {
             int puntosPuestoActual = PlayerPrefs.GetInt("Score" + i, 0);
 
-            // Si los puntos de ahora son mayores que los de este puesto...
+            // Si los puntos de ahora son mayores que los de este puesto
             if (puntosFinales > puntosPuestoActual)
             {
                 // Empujamos a los que están por debajo un puesto hacia abajo
@@ -28,8 +33,7 @@ public class GestorRecords : MonoBehaviour
                 PlayerPrefs.SetString("Name" + i, nombreJugador);
                 PlayerPrefs.Save(); // Confirmamos el guardado
 
-                Debug.Log("¡Récord guardado! " + nombreJugador + " está en el puesto " + i);
-                break; // Rompemos el bucle para no ocupar los 10 puestos a la vez
+                break;
             }
         }
     }

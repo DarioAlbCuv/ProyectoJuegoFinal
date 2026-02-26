@@ -1,3 +1,11 @@
+/* Autor: Dario Alberto Cuevas
+ * Descripción: Se encarga exclusivamente de la física vertical. Detecta colisiones 
+ * con el Layer de plataformas mediante OnCollisionEnter2D, dispara 
+ * el efecto Squash & Stretch y aplica la fuerza de salto automático.
+ * Fecha de creación: 16/01/2026
+ * Última modificación: 22/02/2026
+*/
+
 using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
@@ -9,19 +17,15 @@ public class PlayerJump : MonoBehaviour
     public AudioSource fuenteAudio;
     public AudioClip sonidoSalto;
 
-    // --- 1. LÍNEA AÑADIDA PARA LA ANIMACIÓN ---
     private Animator miAnimador;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        // --- 2. LÍNEA AÑADIDA PARA LA ANIMACIÓN ---
         miAnimador = GetComponent<Animator>();
 
         if (fuenteAudio == null) fuenteAudio = GetComponent<AudioSource>();
 
-        // --- ¡AQUÍ ESTÁ LA MAGIA QUE FALTABA! ---
         if (fuenteAudio != null)
         {
             // Leemos el volumen de los efectos que guardaste en el menú
@@ -40,7 +44,6 @@ public class PlayerJump : MonoBehaviour
             {
                 rb.velocity = Vector2.up * jumpForce;
 
-                // --- 3. LÍNEAS AÑADIDAS PARA LA ANIMACIÓN (EL GATILLO) ---
                 if (miAnimador != null)
                 {
                     miAnimador.Play("NaveSalto", -1, 0f);
@@ -51,9 +54,6 @@ public class PlayerJump : MonoBehaviour
                     // 1. Leemos la memoria
                     float volumenGuardado = PlayerPrefs.GetFloat("VolumenSFX", 0.5f);
                     float volumenFinal = volumenGuardado * volumenGuardado;
-
-                    // --- CHIVATO PARA LA CONSOLA ---
-                    Debug.Log("?? SALTO! Memoria dice: " + volumenGuardado + " | Volumen real aplicado: " + volumenFinal);
 
                     // 2. Forzamos el altavoz base a 1, y que el PlayOneShot haga el trabajo matemático
                     fuenteAudio.volume = 1f;

@@ -1,3 +1,9 @@
+/* Autor: Dario Alberto Cuevas
+ * Descripción: Transforma el valor lineal del Slider de la UI en una escala 
+ * logarítmica (Mathf.Log10) para una atenuación acústica realista.
+ * Fecha de creación: 12/02/2026
+ * Última modificación: 22/02/2026
+*/
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +19,7 @@ public class ConectarSliderMusica : MonoBehaviour
             Slider miSlider = GetComponent<Slider>();
             AudioSource fuenteAudio = musicaObjeto.GetComponent<AudioSource>();
 
-            // 1. Leemos la memoria EXACTA ("VolumenMusica"). Si no hay nada, ponemos 0.5 por defecto.
+            // 1. Leemos la memoria ("VolumenMusica"). Si no hay nada, ponemos 0.5 por defecto.
             float volGuardado = PlayerPrefs.GetFloat("VolumenMusica", 0.5f);
 
             // 2. Colocamos el Slider en su sitio nada más arrancar

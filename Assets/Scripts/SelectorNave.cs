@@ -1,3 +1,9 @@
+/* Autor: Dario Alberto Cuevas
+ * Descripción: Lógica del carrusel de selección. Permite ciclar por un Array de 
+ * Sprites y guarda el índice elegido por el usuario en memoria local.
+ * Fecha de creación: 15/02/2026
+ * Última modificación: 22/02/2026
+*/
 using UnityEngine;
 using UnityEngine.UI; 
 
@@ -39,7 +45,7 @@ public class SelectorNave : MonoBehaviour
         // Cambia la foto
         imagenVisual.sprite = listaDeNaves[indiceActual];
 
-        // GUARDA el dato para la otra escena
+        // Guarda el dato para la otra escena
         PlayerPrefs.SetInt("SkinSeleccionada", indiceActual);
         PlayerPrefs.Save();
     }
